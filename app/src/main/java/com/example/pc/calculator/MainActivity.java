@@ -42,10 +42,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menu_settings://Shoes new intent with options for styling etc.
-                Intent intentSettings = new Intent(MainActivity.this, SettingsActivity.class);
-                startActivity(intentSettings);
-                break;
             case R.id.menu_history://Shows database of actions done in this session
                 Intent intentHistory = new Intent(MainActivity.this,HistoryActivity.class);
                 startActivity(intentHistory);
@@ -130,10 +126,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 !tvInsertField.getText().toString().substring(tvInsertField.getText().toString().length()-1).equals("+")&&
                 !tvInsertField.getText().toString().substring(tvInsertField.getText().toString().length()-1).equals("÷")){
             tvInsertField.setText(tvInsertField.getText().toString()+symbol);
-            Toast.makeText(this, "1", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "1", Toast.LENGTH_SHORT).show();
         }else{
             tvInsertField.setText(tvInsertField.getText().toString().substring(0,tvInsertField.getText().toString().length()-1)+symbol);
-            Toast.makeText(this, "2", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "2", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -220,11 +216,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tvAnswerField.setText(answer);
         boolean isInserted = db.addEntryToHistory(tvInsertField.getText().toString(),
                 tvAnswerField.getText().toString());
-        if(isInserted){
-            Toast.makeText(this, "Data inserted "+tvAnswerField.getText().toString(), Toast.LENGTH_SHORT).show();
-        }else{
-            Toast.makeText(this, "Smth went wrong", Toast.LENGTH_SHORT).show();
-        }
+//        if(isInserted){
+//            Toast.makeText(this, "Data inserted "+tvAnswerField.getText().toString(), Toast.LENGTH_SHORT).show();
+//        }else{
+//            Toast.makeText(this, "Smth went wrong", Toast.LENGTH_SHORT).show();
+//        }
 
 
     }

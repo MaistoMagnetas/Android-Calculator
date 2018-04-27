@@ -5,10 +5,11 @@
     <color name="colorAccent">#20e9ff</color>
 
     <!--Light style-->
-    <color name="calculator_screen">#C2CAD0</color>
-    <color name="sign_numbers">#7E685A</color>
-    <color name="numbers">#C2B9B0</color>
-    <color name="text">#313131</color>
+    <color name="calculator_screen">#F7F4EA</color>
+    <color name="sign_numbers">#DE9151</color>
+    <color name="numbers">#2E4052</color>
+    <color name="text">#C0E0DE</color>
+    <color name="input_text">#20e9ff</color>
     <color name="text_result">#7b7b7b</color>
 
     <!--Dark style-->

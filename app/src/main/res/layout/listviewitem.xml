@@ -35,7 +35,7 @@
             android:layout_height="match_parent" />
 
         <TextView
-            android:background="@color/text"
+            android:background="@color/colorPrimaryDark"
             android:textColor="#FFF"
             android:padding="15dp"
             android:id="@+id/listview_answertext"
