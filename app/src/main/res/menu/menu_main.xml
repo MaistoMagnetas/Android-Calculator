@@ -9,7 +9,7 @@
 
         <item
             android:id="@+id/menu_history"
-            android:title="Hisotry"
+            android:title="History"
             app:showAsAction="never" />
 
         <item

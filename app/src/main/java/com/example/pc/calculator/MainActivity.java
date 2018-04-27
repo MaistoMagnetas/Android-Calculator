@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btnAC, btnLeftBracket, btnRightBracket, btnDivide, btn7, btn8, btn9, btnMultiply,
                     btn4, btn5, btn6, btnMinus, btn1, btn2, btn3, btnPlus, btnDot, btn0, btnDelete, btnEquals;
     private TextView tvInsertField, tvAnswerField;
+    private DatabaseHelper db = new DatabaseHelper(this);
+    private InfixToPostFix infixClass = new InfixToPostFix();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,35 +29,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //Method for layout items initialization
         initLayoutItems();
-
-
-
-    }
-
-    //Method for calculation of numbers
-    private double calculateNumber(double firstNumber, String sign, double secondNumber){
-        if(sign.equals("+")){
-            return firstNumber+secondNumber;
-        }else if(sign.equals("-")){
-            return firstNumber-secondNumber;
-        }else if(sign.equals("*")){
-            return firstNumber*secondNumber;
-        }else if(sign.equals("÷")){
-            return firstNumber/secondNumber;
-        }else{
-            return 0;
-        }
-    }
-
-    //Method to test priority of action
-    private boolean testPriority(String former,String latter){
-        if((former.equals("*") || former.equals("÷")) && (latter.equals("+") || latter.equals("-"))){
-            return true;
-        }else if((former.equals("+") || former.equals("-")) && latter.equals("(")){
-            return true;
-        }else{
-            return false;
-        }
     }
 
     //Menu infalter in Main
@@ -242,9 +215,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     //Calculates the answer. PostfixEvaluation from InfixClass
     private void equalsButtonClicked(){
-        InfixToPostFix infixClass = new InfixToPostFix();
         String postfixConverted = infixClass.infixToPostfixConversion(tvInsertField.getText().toString());
-        tvAnswerField.setText(infixClass.postfixEvaluation(postfixConverted));
+        String answer = infixClass.postfixEvaluation(postfixConverted);
+        tvAnswerField.setText(answer);
+        boolean isInserted = db.addEntryToHistory(tvInsertField.getText().toString(),
+                tvAnswerField.getText().toString());
+        if(isInserted){
+            Toast.makeText(this, "Data inserted "+tvAnswerField.getText().toString(), Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(this, "Smth went wrong", Toast.LENGTH_SHORT).show();
+        }
+
+
     }
 
 }

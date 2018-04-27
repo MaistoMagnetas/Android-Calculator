@@ -54,7 +54,7 @@ public class InfixToPostFix extends com.example.pc.calculator.Stack{
         return -1;
     }
 
-        //Method to loop tokens and get answer from postfix
+    //Method to loop tokens and get answer from postfix
     public String postfixEvaluation(String fixedPostfix){
         double answerTemp = 0.0;
         char temp;
@@ -105,6 +105,5 @@ public class InfixToPostFix extends com.example.pc.calculator.Stack{
             default:
                 return 0;
         }
-        }
+    }
 }
-
