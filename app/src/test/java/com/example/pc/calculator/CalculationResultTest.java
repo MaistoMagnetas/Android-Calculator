@@ -75,24 +75,53 @@ public class CalculationResultTest {
         answer = returnAnswer("(1÷(2-3+4))*(5-1)*3");
         expected = 4;
         assertEquals("Calculus is not wokring",expected,answer,0.01);
+
+        //Multidigit testing
+        answer = returnAnswer("9+2*5-11");
+        expected = 8;
+        assertEquals("Calculus is not wokring",expected,answer,0.01);
+
+        answer = returnAnswer("22+6");
+        expected = 28;
+        assertEquals("Calculus is not wokring",expected,answer,0.01);
+
+        answer = returnAnswer("(5+3)*12÷3");
+        expected = 32;
+        assertEquals("Calculus is not wokring",expected,answer,0.01);
     }
 
     @Test
     public void testInfixToPostFix(){
         String postfixConverted = infixClass.infixToPostfixConversion("2+3*4");
-        String expected = "234*+";
+        String expected = "2 3 4 * + ";
         assertEquals("Infix to Postfix is not working",expected,postfixConverted);
 
         postfixConverted = infixClass.infixToPostfixConversion("4*3+5");
-        expected = "43*5+";
+        expected = "4 3 * 5 + ";
         assertEquals("Infix to Postfix is not working",expected,postfixConverted);
 
         postfixConverted = infixClass.infixToPostfixConversion("(1+2)*7");
-        expected = "12+7*";
+        expected = "1 2 + 7 * ";
         assertEquals("Infix to Postfix is not working",expected,postfixConverted);
 
         postfixConverted = infixClass.infixToPostfixConversion("(1÷(2-3+4))*(5-1)*3");
-        expected = "123-4+÷51-*3*";
+        expected = "1 2 3 - 4 + ÷ 5 1 - * 3 * ";
+        assertEquals("Infix to Postfix is not working",expected,postfixConverted);
+
+        postfixConverted = infixClass.infixToPostfixConversion("9+2*5-11");
+        expected = "9 2 5 * + 11 - ";
+        assertEquals("Infix to Postfix is not working",expected,postfixConverted);
+
+        postfixConverted = infixClass.infixToPostfixConversion("21+11");
+        expected = "21 11 + ";
+        assertEquals("Infix to Postfix is not working",expected,postfixConverted);
+
+        postfixConverted = infixClass.infixToPostfixConversion("22+6");
+        expected = "22 6 + ";
+        assertEquals("Infix to Postfix is not working",expected,postfixConverted);
+
+        postfixConverted = infixClass.infixToPostfixConversion("(5+3)*12÷3");
+        expected = "5 3 + 12 * 3 ÷ ";
         assertEquals("Infix to Postfix is not working",expected,postfixConverted);
     }
 }

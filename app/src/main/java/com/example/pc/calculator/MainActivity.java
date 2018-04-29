@@ -216,13 +216,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tvAnswerField.setText(answer);
         boolean isInserted = db.addEntryToHistory(tvInsertField.getText().toString(),
                 tvAnswerField.getText().toString());
-//        if(isInserted){
-//            Toast.makeText(this, "Data inserted "+tvAnswerField.getText().toString(), Toast.LENGTH_SHORT).show();
-//        }else{
-//            Toast.makeText(this, "Smth went wrong", Toast.LENGTH_SHORT).show();
-//        }
-
-
     }
 
 }
